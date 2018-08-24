@@ -2,17 +2,12 @@ package com.example.cursomc.com.example.cursomc.resource;
 
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.CategoriaService;
 import com.example.cursomc.com.example.cursomc.domain.Categoria;
-import javafx.scene.chart.CategoryAxis;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.xml.ws.Response;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/categorias")
@@ -42,4 +37,11 @@ public class CategoriaResource {
 
         return ResponseEntity.noContent().build();
     }
-}
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable Integer id){
+
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+        }
+    }
