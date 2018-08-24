@@ -1,6 +1,7 @@
 package com.example.cursomc.com.example.cursomc.resource;
 
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.PedidoService;
+import com.example.cursomc.com.example.cursomc.domain.Cliente;
 import com.example.cursomc.com.example.cursomc.domain.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +18,8 @@ public class PedidoResource {
     private PedidoService service;
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public ResponseEntity<?> find(@PathVariable Integer id){ //o respondeentiti encapsula uma http para rest
-        Pedido obj = service.buscar(id);
+    public ResponseEntity<Pedido> find(@PathVariable Integer id){ //o respondeentiti encapsula uma http para rest
+        Pedido obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
 }
