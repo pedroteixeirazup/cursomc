@@ -4,6 +4,8 @@ import com.example.cursomc.com.example.cursomc.com.example.cursomc.repositories.
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.com.example.cursomc.services.exceptions.DataIntegityException;
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.com.example.cursomc.services.exceptions.ObjectNotFoundExcepetion;
 import com.example.cursomc.com.example.cursomc.domain.Categoria;
+import com.example.cursomc.com.example.cursomc.domain.Categoria;
+import com.example.cursomc.com.example.cursomc.domain.Categoria;
 import com.example.cursomc.com.example.cursomc.dto.CategoriaDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -36,10 +38,11 @@ public class CategoriaService {
             return repo.save(obj);
         }
 
-        public Categoria update(Categoria obj){
-            find(obj.getId());
-            return repo.save(obj);
-        }
+    public Categoria update(Categoria obj){
+        Categoria newObj = find(obj.getId());
+        updateData(newObj,obj);
+        return repo.save(newObj);
+    }
 
         public void delete(Integer id){
             find(id);
@@ -65,4 +68,10 @@ public class CategoriaService {
 
             return new Categoria(objDTO.getId(),objDTO.getNome());
         }
+
+    private void updateData(Categoria newObj, Categoria obj){
+
+        newObj.setNome(obj.getNome());
+
+    }
 }
