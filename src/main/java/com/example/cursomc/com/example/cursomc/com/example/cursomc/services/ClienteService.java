@@ -2,16 +2,21 @@ package com.example.cursomc.com.example.cursomc.com.example.cursomc.services;
 
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.repositories.CidadeRepository;
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.repositories.ClienteRepository;
+
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.repositories.EnderecoRepository;
+
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.com.example.cursomc.services.exceptions.DataIntegityException;
 import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.com.example.cursomc.services.exceptions.ObjectNotFoundExcepetion;
 import com.example.cursomc.com.example.cursomc.domain.Cidade;
 import com.example.cursomc.com.example.cursomc.domain.Cliente;
 import com.example.cursomc.com.example.cursomc.domain.Cliente;
+
 import com.example.cursomc.com.example.cursomc.domain.Endereco;
 import com.example.cursomc.com.example.cursomc.domain.com.example.cursomc.domain.enums.TipoCliente;
 import com.example.cursomc.com.example.cursomc.dto.ClienteDTO;
 import com.example.cursomc.com.example.cursomc.dto.ClienteNewDTO;
+import com.example.cursomc.com.example.cursomc.dto.ClienteDTO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -19,7 +24,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+
 import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +50,7 @@ public class ClienteService {
         Cliente newObj = find(obj.getId());
         updateData(newObj,obj);
         return repo.save(newObj);
+
    }
 
     @Transactional
@@ -51,6 +59,7 @@ public class ClienteService {
             obj = repo.save(obj);
             enderecoRepository.saveAll(obj.getEnderecos());
             return obj;
+
     }
 
     public void delete(Integer id){
@@ -77,6 +86,7 @@ public class ClienteService {
 
         return new Cliente(objDTO.getId(),objDTO.getNome(),objDTO.getEmail(),null,null);
     }
+
 
     public Cliente fromDTO(ClienteNewDTO objDTO){
 
