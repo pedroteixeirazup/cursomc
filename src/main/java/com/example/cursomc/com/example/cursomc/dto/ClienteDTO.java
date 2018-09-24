@@ -1,5 +1,6 @@
 package com.example.cursomc.com.example.cursomc.dto;
 
+import com.example.cursomc.com.example.cursomc.com.example.cursomc.services.validation.ClienteUpdate;
 import com.example.cursomc.com.example.cursomc.domain.Cliente;
 import org.hibernate.validator.constraints.Length;
 
@@ -7,6 +8,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
+@ClienteUpdate //faz a verificação do cliente
 public class ClienteDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
